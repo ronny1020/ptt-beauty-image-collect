@@ -17,7 +17,15 @@ async function run() {
 
   const image_url_list_keys = Object.keys(image_url_list)
 
-  image_url_list_keys.forEach(key => console.log(image_url_list[key].attribs.href))
+  image_url_list_keys.forEach(key => {
+    let imageUrl
+    if (!image_url_list[key] || !image_url_list[key].attribs) return
+    else imageUrl = image_url_list[key].attribs.href
+
+    if (imageUrl.endsWith('jpg') || imageUrl.endsWith('jpeg') || imageUrl.endsWith('png')) {
+      console.log(imageUrl)
+    }
+  })
 }
 
 run()
